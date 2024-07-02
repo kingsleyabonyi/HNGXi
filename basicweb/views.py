@@ -30,7 +30,7 @@ class HelloView(APIView):
         
         
         # location = "Nsukka"
-        temperature = 11
+        temperature = 14
 
         greeting = f"Hello, {visitor_name}! The temperature is {temperature} degrees Celsius in {location}"
 
