@@ -8,14 +8,17 @@ from .serializers import HelloSerializer
 class HelloView(APIView):
     def get(self, request):
         visitor_name = request.query_params.get('visitor_name', 'Nnamdi')
-        client_ip = request.META.get('REMOTE_ADDR')
+        client_ip = "197.210.0.0/16/"
 
         
         # IP Geolocation API (for demonstration, we'll use a placeholder)
         # Ideally, use a service like ipinfo.io or ipstack.com to get location from IP
         geolocation_api_url = f"https://ipinfo.io/{client_ip}/json"
+        print(geolocation_api_url)
         geolocation_response = requests.get(geolocation_api_url)
+        print(geolocation_response)
         geolocation_data = geolocation_response.json()
+        print(geolocation_data)
         location = geolocation_data.get('city', 'Unknown City')
 
         weather_api_key = os.getenv('a658434e15cf2e723f2f61758f5ba9b8')
@@ -23,9 +26,10 @@ class HelloView(APIView):
         weather_response = requests.get(weather_api_url)
         weather_data = weather_response.json()
         temperature = weather_data['main']['temp'] if 'main' in weather_data else 'Unknown'
+        # print(te)
         
         
-        location = "Nsukka"
+        # location = "Nsukka"
         temperature = 11
 
         greeting = f"Hello, {visitor_name}! The temperature is {temperature} degrees Celsius in {location}"
