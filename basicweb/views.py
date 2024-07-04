@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 import requests, os
+from decouple import config
 
 from .serializers import HelloSerializer
 
@@ -10,7 +11,7 @@ class HelloView(APIView):
         visitor_name = request.query_params.get('visitor_name', 'Nnamdi')
         
         # Extract client IP from request (example, might need adjustment based on your setup)
-        client_ip = request.META.get('REMOTE_ADDR', '197.210.0.0')  # Default IP for testing
+        client_ip = '197.210.0.0'  # Default IP for testing
 
         # IP Geolocation API (replace with your actual service)
         geolocation_api_url = f"https://ipinfo.io/{client_ip}/json"
@@ -23,7 +24,8 @@ class HelloView(APIView):
             location = 'Unknown City'
 
         # Get weather API key from environment variable
-        weather_api_key = os.getenv('WEATHER_API_KEY')
+        weather_api_key = config('WEATHER_API_KEY')
+        
         if not weather_api_key:
             return Response({"error": "Weather API key not found."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         print(f"Weather API Key: {weather_api_key}")
