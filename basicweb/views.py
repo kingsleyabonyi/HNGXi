@@ -11,7 +11,7 @@ class HelloView(APIView):
         visitor_name = request.query_params.get('visitor_name', 'Nnamdi')
         
         # Extract client IP from request (example, might need adjustment based on your setup)
-        client_ip = '197.210.85.237'  # Default IP for testing
+        client_ip = '102.90.64.204'  # Default IP for testing
 
         # IP Geolocation API (replace with your actual service)
         geolocation_api_url = f"https://ipinfo.io/{client_ip}/json"
@@ -19,7 +19,9 @@ class HelloView(APIView):
             geolocation_response = requests.get(geolocation_api_url)
             geolocation_response.raise_for_status()
             geolocation_data = geolocation_response.json()
+            print(geolocation_data)
             location = geolocation_data.get('city', 'Unknown City')
+            print(location)
         except requests.RequestException as e:
             location = 'Unknown City'
 
