@@ -12,20 +12,19 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-# import environ
-
-from decouple import config
+import environ
+# from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Initialise environment variables
-# env = environ.Env(DEBUG=(bool, False))
-# environ.Env.read_env()
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env()
 
 # Read the API key
-WEATHER_API_KEY = config('WEATHER_API_KEY')
+WEATHER_API_KEY = env('WEATHER_API_KEY')
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,10 +36,10 @@ SECRET_KEY = 'django-insecure-hbuviyg2m%e@qu^t5(h==vrt+pa(iut73llu5br_guy0ii1edg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://hngxi-tyuc.onrender.com', '*']
 
 
-
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
