@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-hbuviyg2m%e@qu^t5(h==vrt+pa(iut73llu5br_guy0ii1edg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://hngxi-tyuc.onrender.com', '*']
+ALLOWED_HOSTS = ['*']
 
 
 
