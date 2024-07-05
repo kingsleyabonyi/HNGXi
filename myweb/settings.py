@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-# import environ
+import environ
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,8 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Initialise environment variables
-# env = environ.Env(DEBUG=(bool, False))
-# environ.Env.read_env()
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env()
 
 # Read the API key
 WEATHER_API_KEY = config('WEATHER_API_KEY')
