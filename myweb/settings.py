@@ -39,7 +39,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['https://hngxi-tyuc.onrender.com', '*']
 
 
-# Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
